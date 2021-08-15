@@ -11,13 +11,14 @@ var userChoice;
 
 
 var lowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+
 // changing lowercase letters into uppercase
 var blankUpper = [];
 var toUpper = function(x) {
   return x.toUpperCase();
 };
-upperCase = lowerCase.map(toUpper);
 
+upperCase = lowerCase.map(toUpper);
 
 var special =   ["!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", "<", "=", ">", "?", "@", "[", "]", "^", "_", "{", "|", "}", "~"];
 var numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -27,8 +28,11 @@ var numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
+
   passwordText.value = password;
+
 }
+
 
 
 // Add event listener to generate button
@@ -65,7 +69,7 @@ if (!lowerConf && !upperConf && !numberConf && specialConf) {
 }
 // 4 true options
 else if (lowerConf && upperConf && numberConf && specialConf) {
-  userChoice = lowerCase.concat(upperCase, numbers, specialCharacter);
+  userChoice = lowerCase.concat(upperCase, numbers, special);
   console.log(userChoice);
 }
 // 3 true options
@@ -141,6 +145,19 @@ else if (specialConf) {
   console.log(userChoice);
 };
 
+// variable for password lenght
+var blankPassword = [];
 
+// math.random for random selection
+for (var i = 0; i < passwordLength; i++) {
+  var allchoices = userChoice[Math.floor(Math.random() * userChoice.length)];
+  blankPassword.push(allchoices);
+  console.log(allchoices);
+}
+
+// joining and returning the password
+var password = blankPassword.join("");
+console.log("your password is:" + password)
+return password;
 
 }
